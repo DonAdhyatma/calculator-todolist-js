@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .title,
+      .subtitle {
+        color: aliceblue;
+      }
+      .containers {
+        background-color: rgb(41, 141, 255);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="containers">
+      <section class="hero is-info">
+        <div class="hero-body">
+          <div class="container">
+            <h1 class="title">Todo List</h1>
+            <h2 class="subtitle">Mau bikin apa?</h2>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div class="container">
+      <form action="#">
+        <input type="text" id="new_text" />
+        <button onclick="add()">Tambah</button>
+      </form>
+
+      <ul id="todo"></ul>
+    </div>
+
+    <style>
+      .done {
+        text-decoration: line-through;
+      }
+    </style>
+
+    <script>
+      const todo = document.getElementById('todo');
+      //   Fitur TODO:
+      // 1. menambahkan
+      // 2. coret kalau sudah selesai
+      // 3. menghapus
+      function add() {
+        //ambil nilai dari textnya
+        let newText = document.getElementById('new_text');
+
+        // tambahkan list baru ke dalam ul
+
+        let newTodo = "<li> <span onclick='toggle(this)'> " + newText.value + '</span>' + "<span onclick='removeItem(this)' > [x] </span>" + '</li>';
+
+        todo.insertAdjacentHTML('afterbegin', newTodo);
+        // kosongkan fieldnya
+        newText.value = '';
+      }
+      function toggle(el) {
+        el.classList.toggle('done');
+      }
+      function removeItem(el) {
+        el.parentElement.remove();
+      }
+    </script>
+  </body>
+</html>
